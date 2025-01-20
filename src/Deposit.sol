@@ -13,7 +13,8 @@
 
 // SPDX-License-Identifier: CC0-1.0
 
-pragma solidity 0.6.11;
+pragma solidity 0.6.11; // look for the attacks that can be used to exploit this contract based on the versions
+
 
 // This interface is designed to be compatible with the Vyper version.
 /// @notice This is the Ethereum 2.0 deposit contract interface.
@@ -41,7 +42,7 @@ interface IDepositContract {
         bytes32 deposit_data_root
     ) external payable;
 
-    /// @notice Query the current deposit root hash.
+    /// @notice Query the current deposit root hash.>
     /// @return The deposit root hash.
     function get_deposit_root() external view returns (bytes32);
 
@@ -67,7 +68,7 @@ interface ERC165 {
 /// For more information see the Phase 0 specification under https://github.com/ethereum/eth2.0-specs
 contract DepositContract is IDepositContract, ERC165 {
     uint constant DEPOSIT_CONTRACT_TREE_DEPTH = 32;
-    // NOTE: this also ensures `deposit_count` will fit into 64-bits
+    // NOTE: this also ensures `deposit_count` will fit into 64-bits>
     uint constant MAX_DEPOSIT_COUNT = 2**DEPOSIT_CONTRACT_TREE_DEPTH - 1;
 
     bytes32[DEPOSIT_CONTRACT_TREE_DEPTH] branch;
